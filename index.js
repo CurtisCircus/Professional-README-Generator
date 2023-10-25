@@ -1,9 +1,7 @@
-// TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./assets/script.js');
 
-// TODO: Create an array of questions for user input
 const question = [
     {
         type: 'input',
@@ -13,7 +11,7 @@ const question = [
       {
         type: 'input',
         name: 'description',
-        message: 'Describe your project. What motivated you to make this project? What problem does it solve?',
+        message: 'Describe your project. What motivated you to make this project? What problem(s) does it solve?',
       },
   {
     type: 'list',
@@ -48,12 +46,9 @@ const question = [
 },
 ];
 
-// TODO: Create a function to write README file
 inquirer.prompt(question).then((answers) => {
-    // Generate the README content based on user input
     const readmeContent = generateMarkdown(answers);
 
-    // Write the content to a README.md file
     fs.writeFile('README.md', readmeContent, (err) => {
         if (err) {
             console.error('Error writing README.md:', err);
@@ -62,8 +57,6 @@ inquirer.prompt(question).then((answers) => {
         }
     });
 });
-// TODO: Create a function to initialize app
 function init() {}
 
-// Function call to initialize app
 init();
